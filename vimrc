@@ -16,6 +16,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'bling/vim-airline'
+Plugin 'goldfeld/vim-seek'
 
 call vundle#end()            " required
 syntax on
