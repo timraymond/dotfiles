@@ -39,3 +39,6 @@ nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\
 " airline
 let g:airline_powerline_fonts = 1
 set laststatus=2
+
+" golang
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
