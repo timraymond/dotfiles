@@ -15,6 +15,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'bling/vim-airline'
 
 call vundle#end()            " required
 syntax on
@@ -33,3 +34,7 @@ nnoremap <leader>n :Explore<CR>
 " Swap comma-separated list items with gh and gl
 nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
 nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
+
+" airline
+let g:airline_powerline_fonts = 1
+set laststatus=2
