@@ -1,6 +1,12 @@
 set nocompatible
 filetype off
 
+" Whitespace
+set softtabstop=2
+set shiftwidth=2
+set tabstop=2
+set expandtab
+
 "Squirrel away swapfiles to ~/.vim/tmp
 set directory=$HOME/.vim/tmp/ 
 set t_Co=256
@@ -13,10 +19,13 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-surround'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'bling/vim-airline'
 Plugin 'goldfeld/vim-seek'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()            " required
 syntax on
@@ -31,6 +40,7 @@ filetype plugin indent on    " required
 " mappings
 inoremap tk <ESC>
 nnoremap <leader>n :Explore<CR>
+nnoremap <leader>h :noh<CR>
 
 " Swap comma-separated list items with gh and gl
 nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
