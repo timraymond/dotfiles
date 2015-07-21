@@ -10,7 +10,6 @@ set expandtab
 "Squirrel away swapfiles to ~/.vim/tmp
 set directory=$HOME/.vim/tmp/ 
 set t_Co=256
-colorscheme molokai
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -26,10 +25,12 @@ Plugin 'bling/vim-airline'
 Plugin 'goldfeld/vim-seek'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tomasr/molokai'
 
 call vundle#end()            " required
 syntax on
 filetype plugin indent on    " required
+colorscheme molokai
 "
 " Brief help
 " :PluginList       - lists configured plugins
