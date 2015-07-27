@@ -26,6 +26,7 @@ Plugin 'goldfeld/vim-seek'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tomasr/molokai'
+Plugin 'skalnik/vim-vroom'
 
 call vundle#end()            " required
 syntax on
