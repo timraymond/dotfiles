@@ -27,6 +27,7 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tomasr/molokai'
 Plugin 'skalnik/vim-vroom'
+Plugin 'vim-scripts/ruby-matchit'
 
 call vundle#end()            " required
 syntax on
@@ -38,6 +39,8 @@ colorscheme molokai
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+
+runtime macros/matchit.vim
 
 " mappings
 inoremap tk <ESC>
