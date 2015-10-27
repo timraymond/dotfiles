@@ -28,6 +28,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tomasr/molokai'
 Plugin 'skalnik/vim-vroom'
 Plugin 'vim-scripts/ruby-matchit'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()            " required
 syntax on
