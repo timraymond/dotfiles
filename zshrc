@@ -22,7 +22,6 @@ antigen use oh-my-zsh
 
 # Bundles
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle kennethreitz/autoenv
 
 # Themes
 antigen theme cloud
