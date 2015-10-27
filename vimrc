@@ -52,6 +52,10 @@ nnoremap <leader>h :noh<CR>
 nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
 nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 
+" Pry
+nnoremap <leader>p :normal orequire 'pry'; binding.pry<ESC>
+nnoremap <leader>P :normal Orequire 'pry'; binding.pry<ESC>
+
 " airline
 let g:airline_powerline_fonts = 1
 set laststatus=2
