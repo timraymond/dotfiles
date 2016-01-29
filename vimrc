@@ -29,6 +29,14 @@ Plugin 'tomasr/molokai'
 Plugin 'skalnik/vim-vroom'
 Plugin 'vim-scripts/ruby-matchit'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'fatih/vim-go'
+Plugin 'mileszs/ack.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-scripts/summerfruit256.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'rizzatti/dash.vim'
+Plugin 'nathanielc/vim-tickscript'
+Plugin 'cespare/vim-toml'
 
 call vundle#end()            " required
 syntax on
@@ -44,9 +52,32 @@ colorscheme molokai
 runtime macros/matchit.vim
 
 " mappings
+let mapleader = "\<Space>"
+
+" Plugin remappings
+map <Leader>e <Plug>(easymotion-prefix)
+nmap <C-[> <Plug>DashSearch
+nmap <C-{> <Plug>DashGlobalSearch
+
+" Insert mappings
 inoremap tk <ESC>
-nnoremap <leader>n :Explore<CR>
+
+" Leader bindings
+nnoremap <leader>d :Explore<CR>
 nnoremap <leader>h :noh<CR>
+nnoremap <leader>H :set hlsearch<CR>
+nnoremap <leader><leader> za
+nnoremap <leader>v :sp $MYVIMRC<CR>
+nnoremap <leader>s :source $MYVIMRC<CR>
+nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>T :tabe<CR>
+nnoremap <leader>o<leader> zO
+nnoremap <leader>gi :GoImports<CR>
+nnoremap <leader>r :GoTest ./...<CR>
 
 " Swap comma-separated list items with gh and gl
 nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
@@ -61,4 +92,14 @@ let g:airline_powerline_fonts = 1
 set laststatus=2
 
 " golang
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
+set path+=~/go/src
+autocmd FileType go set foldmethod=syntax
+
+" The Silver Searcher
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" Relative Line numbers on all windows
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+autocmd BufRead * :set relativenumber
+autocmd BufNewFile * :set relativenumber

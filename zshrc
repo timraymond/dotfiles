@@ -9,7 +9,7 @@ source /usr/local/share/chruby/chruby.sh
 ##########
 
 export GOPATH=$HOME/go
-export PATH=$GOROOT/bin:$PATH
+export PATH=$GOPATH/bin:$PATH
 
 ###########
 # Antigen #
@@ -33,3 +33,6 @@ antigen apply
 ###########
 
 alias dsql="docker run -it --link theguide_pg_1:postgres --rm postgres:9.4 sh -c 'exec psql -h \"\$POSTGRES_PORT_5432_TCP_ADDR\" -p \"\$POSTGRES_PORT_5432_TCP_PORT\" -U postgres'"
+
+# Z cmd
+. `brew --prefix`/etc/profile.d/z.sh
