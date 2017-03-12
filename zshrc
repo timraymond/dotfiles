@@ -9,7 +9,7 @@ source /usr/local/share/chruby/chruby.sh
 ##########
 
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
+export PATH=$HOME/scripts:$PATH
 
 ###########
 # Antigen #

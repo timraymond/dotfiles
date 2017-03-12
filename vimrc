@@ -7,6 +7,8 @@ set shiftwidth=2
 set tabstop=2
 set expandtab
 
+set modeline
+
 "Squirrel away swapfiles to ~/.vim/tmp
 set directory=$HOME/.vim/tmp/ 
 set t_Co=256
@@ -27,7 +29,6 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tomasr/molokai'
 Plugin 'skalnik/vim-vroom'
-Plugin 'vim-scripts/ruby-matchit'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'fatih/vim-go'
 Plugin 'mileszs/ack.vim'
@@ -37,6 +38,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'rizzatti/dash.vim'
 Plugin 'nathanielc/vim-tickscript'
 Plugin 'cespare/vim-toml'
+Plugin 'rstacruz/sparkup'
+Plugin 'mxw/vim-jsx'
+Plugin 'moll/vim-node'
 
 call vundle#end()            " required
 syntax on
@@ -49,24 +53,26 @@ colorscheme molokai
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
-runtime macros/matchit.vim
-
 " mappings
 let mapleader = "\<Space>"
 
 " Plugin remappings
 map <Leader>e <Plug>(easymotion-prefix)
-nmap <C-[> <Plug>DashSearch
-nmap <C-{> <Plug>DashGlobalSearch
+" nmap <C-[> <Plug>DashSearch
+" nmap <C-{> <Plug>DashGlobalSearch
+nnoremap <C-L> <C-w>l
+nnoremap <C-H> <C-w>h
+nnoremap <C-J> <C-w>j
+nnoremap <C-K> <C-w>k
 
 " Insert mappings
 inoremap tk <ESC>
 
 " Leader bindings
 nnoremap <leader>d :Explore<CR>
-nnoremap <leader>h :noh<CR>
-nnoremap <leader>H :set hlsearch<CR>
-nnoremap <leader><leader> za
+nnoremap <leader>H :noh<CR>
+nnoremap <leader>h :set hlsearch<CR>
+nnoremap <leader><leader> zA
 nnoremap <leader>v :sp $MYVIMRC<CR>
 nnoremap <leader>s :source $MYVIMRC<CR>
 nnoremap <leader>t :TagbarToggle<CR>
@@ -75,9 +81,9 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>T :tabe<CR>
-nnoremap <leader>o<leader> zO
 nnoremap <leader>gi :GoImports<CR>
-nnoremap <leader>r :GoTest ./...<CR>
+nnoremap <leader>r :!tt<CR>
+nnoremap <leader>R :GoTestFunc<CR>
 
 " Swap comma-separated list items with gh and gl
 nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
@@ -103,3 +109,14 @@ autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
 autocmd BufRead * :set relativenumber
 autocmd BufNewFile * :set relativenumber
+
+" JSX
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+" Wildmode / Wildmenu
+" 
+" Sets the cool tabcomplete on buffer switching
+set wildmode=longest,full
+set wildmenu
+set wildignore+=.git
+set wildoptions=tagfile
