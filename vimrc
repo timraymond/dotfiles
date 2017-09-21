@@ -24,6 +24,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'goldfeld/vim-seek'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -41,11 +42,20 @@ Plugin 'cespare/vim-toml'
 Plugin 'rstacruz/sparkup'
 Plugin 'mxw/vim-jsx'
 Plugin 'moll/vim-node'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'ajmwagar/vim-dues'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'nelstrom/vim-markdown-folding'
+Plugin 'godlygeek/tabular'
 
 call vundle#end()            " required
 syntax on
 filetype plugin indent on    " required
+
+" set background=light
+" colorscheme PaperColor
 colorscheme molokai
+
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -120,3 +130,8 @@ set wildmode=longest,full
 set wildmenu
 set wildignore+=.git
 set wildoptions=tagfile
+
+" SuperRetab
+" Allows retabbing of only the first column
+
+command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g

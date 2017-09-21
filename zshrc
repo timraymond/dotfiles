@@ -36,3 +36,6 @@ alias dsql="docker run -it --link theguide_pg_1:postgres --rm postgres:9.4 sh -c
 
 # Z cmd
 . `brew --prefix`/etc/profile.d/z.sh
+
+## Git Subrepo
+source $HOME/scripts/git-subrepo/.rc
