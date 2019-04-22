@@ -15,7 +15,6 @@ go-install() {
   local bootstrap_version="1.12.4"
   local bs_tarball="go${bootstrap_version}.darwin-amd64.tar.gz"
   local bs_url="https://dl.google.com/go/${bs_tarball}"
-  local bs_sha256="50af1aa6bf783358d68e125c5a72a1ba41fb83cee8f25b58ce59138896730a49"
   local version="$1"
 
 
@@ -36,8 +35,40 @@ go-install() {
   fi
 }
 
+globalEnvRC() {
+  cat <<EOF
+PATH_add /usr/local/go-global/${1}/bin
+PATH_add /usr/local/goroots/go${1}/bin
+export GO111MODULE=off
+layout go
+EOF
+}
+
+initGoGlobal() {
+  local version
+
+  version="$1"
+
+  log "Creating go${version} global directory..."
+  sudo mkdir "/usr/local/go-global"
+  sudo chmod g+wx "/usr/local/go-global"
+  sudo chgrp -hR gophers "/usr/local/go-global"
+
+  mkdir "/usr/local/go-global/${version}"
+  globalEnvRC "${version}" | tee -a "/usr/local/go-global/${version}/.envrc"
+
+  # Install tools:
+  (
+  cd "/usr/local/go-global/${version}"
+  direnv allow
+  eval "$(direnv export bash)"
+  vim -es "+packadd vim-go" "+GoInstallBinaries" "+q"
+  )
+}
+
 shouldBootstrap() {
-  local dirCount=$(find /usr/local/goroots -mindepth 1 -maxdepth 1 -type d | wc -l)
+  local dirCount
+  dirCount=$(find /usr/local/goroots -mindepth 1 -maxdepth 1 -type d | wc -l)
   if [[ "$dirCount" -eq 0 ]]; then
     return 0
   fi
@@ -155,9 +186,12 @@ if [[ ! -d "${goroots}" ]]; then
   sudo chmod g+wx "${goroots}"
   sudo chgrp -hR gophers "${goroots}"
 
-  set -x
   go-install 1.12
-  set +x
+fi
+
+if [[ ! -d "/usr/local/go-global/1.12" ]]; then
+  log "Go 1.12 global directory missing. Setting up..."
+  initGoGlobal 1.12
 fi
 
 ##############
@@ -166,6 +200,6 @@ fi
 
 # Setup tmux themes
 if [[ ! -d "$HOME/.tmux-themepack" ]]; then
-  read -p "Enter desired powerline color:" color
+  read -rp "Enter desired powerline color:" color
   install_tmux_themes "$color"
 fi

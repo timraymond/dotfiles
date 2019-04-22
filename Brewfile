@@ -8,6 +8,7 @@ brew 'tmux'
 brew 'git', override_system_git: true
 brew 'z'
 brew 'direnv'
+brew 'mas'
 
 # Editing
 brew 'vim', override_system_vim: true
@@ -27,6 +28,7 @@ cask 'paw'
 cask 'bartender'
 cask 'wireshark'
 cask 'karabiner-elements'
+cask 'zoomus'
 
 # Fonts
 tap 'homebrew/cask-fonts'
