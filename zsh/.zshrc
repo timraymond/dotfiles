@@ -6,7 +6,7 @@ eval "$(direnv hook zsh)"
 # Antigen #
 ###########
 
-source $HOME/dotfiles/antigen.zsh
+source /usr/local/share/antigen/antigen.zsh
 
 # Sources
 antigen use oh-my-zsh
