@@ -4,10 +4,41 @@ set -euo pipefail
 
 unamestr=$(uname)
 
+setupSSH() {
+  mkdir "$HOME/.ssh"
+  ssh-keygen -t rsa
+}
+
+setHostname() {
+  local name
+  name=$1
+  sudo scutil --set LocalHostName "$name"
+  sudo scutil --set ComputerName "$name"
+  sudo dscacheutil -flushcache
+}
+
 install_tmux_themes() {
   local color="$1"
   git clone https://github.com/jimeh/tmux-themepack.git "$HOME/.tmux-themepack"
   echo "source-file ${HOME}/.tmux-themepack/powerline/default/${color}.tmuxtheme" | tee -a "$HOME/.tmux-theme"
+}
+
+setupVim() {
+  set -x
+  # subshell
+  (
+    mkdir -p "${HOME}/.vim/pack/minpac/opt"
+
+    (
+      cd "${HOME}/.vim/pack/minpac/opt"
+      git clone https://github.com/k-takata/minpac.git
+    )
+
+    vim -V -es -i NONE "+source $HOME/.vimrc" "+call minpac#update()" "+q"
+    # install fzf binary
+    "${HOME}"/.vim/pack/minpac/start/fzf/install --bin
+  )
+  set +x
 }
 
 go-install() {
@@ -128,6 +159,11 @@ if [[ ! -f "$HOME/.vimrc" ]]; then
 	stow vim
 fi
 
+if [[ ! -d "$HOME/.vim" ]]; then
+  log "Setting up vim..."
+  setupVim
+fi
+
 if [[ ! -d "$HOME/.config/karabiner" ]]; then
 	log "Setting up karabiner config..."
 	stow karabiner
@@ -194,6 +230,10 @@ if [[ ! -d "/usr/local/go-global/1.12" ]]; then
   initGoGlobal 1.12
 fi
 
+if [[ ! -d "$HOME/.ssh" ]]; then
+  setupSSH
+fi
+
 ##############
 # Setup tmux #
 ##############
@@ -202,4 +242,15 @@ fi
 if [[ ! -d "$HOME/.tmux-themepack" ]]; then
   read -rp "Enter desired powerline color:" color
   install_tmux_themes "$color"
+fi
+
+################
+# Set Hostname #
+################
+
+targetHostname="proteus"
+currentHostname=$(scutil --get LocalHostName)
+if [[ "$currentHostname" != "$targetHostname" ]]; then
+  log "Setting hostname to $targetHostname"
+  setHostname "$targetHostname"
 fi

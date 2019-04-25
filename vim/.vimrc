@@ -1,5 +1,8 @@
 set nocompatible
-filetype off
+
+" requied by vim-go
+filetype plugin indent on
+syntax on
 
 " Whitespace
 set softtabstop=2
@@ -30,13 +33,13 @@ call minpac#add('Lokaltog/vim-easymotion')
 call minpac#add('airblade/vim-gitgutter')
 call minpac#add('scrooloose/nerdcommenter')
 call minpac#add('godlygeek/tabular')
+call minpac#add('junegunn/fzf')
+call minpac#add('fatih/vim-go')
 
 " Optional plugins
-call minpac#add('fatih/vim-go', {'type': 'opt'})
 call minpac#add('cespare/vim-toml', {'type': 'opt'})
 call minpac#add('hashivim/vim-terraform', {'type': 'opt'})
 
-syntax on
 
 call minpac#add('tomasr/molokai')
 colorscheme molokai
@@ -74,6 +77,7 @@ nnoremap <leader>p :set paste<CR>
 nnoremap <leader>P :set nopaste<CR>
 
 autocmd FileType go set foldmethod=syntax
+autocmd FileType go packadd vim-go
 
 " Relative Line numbers on all windows
 autocmd InsertEnter * :set number

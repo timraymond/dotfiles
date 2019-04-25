@@ -5,7 +5,10 @@ brew 'antigen'
 
 # Other CLI
 brew 'tmux'
+brew 'tmate'
 brew 'git', override_system_git: true
+brew 'tig'
+brew 'rg'
 brew 'z'
 brew 'direnv'
 brew 'mas'
