@@ -29,12 +29,14 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('tpope/vim-unimpaired')
 call minpac#add('tpope/vim-surround')
+call minpac#add('tpope/vim-dispatch')
 call minpac#add('Lokaltog/vim-easymotion')
 call minpac#add('airblade/vim-gitgutter')
 call minpac#add('scrooloose/nerdcommenter')
 call minpac#add('godlygeek/tabular')
 call minpac#add('junegunn/fzf')
 call minpac#add('fatih/vim-go')
+call minpac#add('w0rp/ale')
 
 " Optional plugins
 call minpac#add('cespare/vim-toml', {'type': 'opt'})
@@ -75,6 +77,7 @@ nnoremap <leader>gr :GoReferrers<CR>
 nnoremap <leader>gc :GoCallers<CR>
 nnoremap <leader>p :set paste<CR>
 nnoremap <leader>P :set nopaste<CR>
+nnoremap <leader>f :FZF<CR>
 
 autocmd FileType go set foldmethod=syntax
 autocmd FileType go packadd vim-go
@@ -97,3 +100,8 @@ set wildoptions=tagfile
 " Allows retabbing of only the first column
 
 command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
+
+" ALE
+let g:ale_linters = {
+  \ 'go': ['gopls'],
+  \}

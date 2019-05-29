@@ -12,6 +12,7 @@ brew 'rg'
 brew 'z'
 brew 'direnv'
 brew 'mas'
+brew 'hub'
 
 # Editing
 brew 'vim', override_system_vim: true
@@ -32,6 +33,8 @@ cask 'bartender'
 cask 'wireshark'
 cask 'karabiner-elements'
 cask 'zoomus'
+cask 'docker'
+cask 'rescuetime'
 
 # Fonts
 tap 'homebrew/cask-fonts'
@@ -44,3 +47,5 @@ mas 'shush', id: 496437906
 mas 'magnet', id: 441258766
 mas 'tweetbot', id: 557168941
 mas '1password', id: 443987910
+mas 'omnifocus', id: 1346203938 
+mas 'focus', id: 777233759

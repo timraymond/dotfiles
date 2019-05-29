@@ -94,6 +94,17 @@ initGoGlobal() {
   direnv allow
   eval "$(direnv export bash)"
   vim -es "+packadd vim-go" "+GoInstallBinaries" "+q"
+
+  # install one-off tools
+  tools=(
+    "golang.org/x/tools/cmd/gopls"
+    "github.com/smartystreets/goconvey"
+  )
+  for t in "${tools[@]}"
+  do
+    echo "Installing ${t##*/}"
+    go get -u "$t"
+  done
   )
 }
 
@@ -231,6 +242,7 @@ if [[ ! -d "/usr/local/go-global/1.12" ]]; then
 fi
 
 if [[ ! -d "$HOME/.ssh" ]]; then
+  stow ssh
   setupSSH
 fi
 
