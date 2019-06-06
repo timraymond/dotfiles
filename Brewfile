@@ -35,10 +35,22 @@ cask 'karabiner-elements'
 cask 'zoomus'
 cask 'docker'
 cask 'rescuetime'
+cask 'recordit'
 
 # Fonts
 tap 'homebrew/cask-fonts'
 cask 'font-roboto-mono-for-powerline'
+
+# Node
+brew 'node@10'
+brew 'yarn'
+
+# gRPC
+brew 'prototool'
+brew 'grpcurl'
+
+tap 'ktr0731/evans'
+brew 'evans'
 
 # Mac App Store
 mas 'airmail', id: 918858936

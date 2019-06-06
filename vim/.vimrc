@@ -104,4 +104,5 @@ command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
 " ALE
 let g:ale_linters = {
   \ 'go': ['gopls'],
+  \ 'proto': ['prototool-lint'],
   \}

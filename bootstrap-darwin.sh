@@ -41,6 +41,17 @@ setupVim() {
   set +x
 }
 
+installGRPC() {
+  local version=$1
+  local downloadDir=$2
+
+  (
+    cd "$downloadDir"
+    sudo bash -c "curl -sSL \"https://github.com/protocolbuffers/protobuf/releases/download/v${version}/protoc-${version}-osx-x86_64.zip\" > \"protoc-${version}-osx-x86_64.zip\""
+    sudo unzip "protoc-${version}-osx-x86_64.zip" -d "${version}"
+  )
+}
+
 go-install() {
   local goroots="/usr/local/goroots"
   local bootstrap_version="1.12.4"
@@ -78,6 +89,15 @@ EOF
 initGoGlobal() {
   local version
 
+  tools=(
+    "golang.org/x/tools/cmd/gopls"
+    "github.com/smartystreets/goconvey"
+    "github.com/gogo/protobuf/proto"
+    "github.com/gogo/protobuf/protoc-gen-gogo"
+    "github.com/gogo/protobuf/gogoproto"
+    "github.com/fullstorydev/grpcui"
+  )
+
   version="$1"
 
   log "Creating go${version} global directory..."
@@ -93,16 +113,18 @@ initGoGlobal() {
   cd "/usr/local/go-global/${version}"
   direnv allow
   eval "$(direnv export bash)"
-  vim -es "+packadd vim-go" "+GoInstallBinaries" "+q"
+
+  export GO111MODULE=off
+
+  set +e
+  vim -es "+packadd vim-go" "+verbose GoInstallBinaries" "+q"
+  set -e
 
   # install one-off tools
-  tools=(
-    "golang.org/x/tools/cmd/gopls"
-    "github.com/smartystreets/goconvey"
-  )
+  log "Installing tools..."
   for t in "${tools[@]}"
   do
-    echo "Installing ${t##*/}"
+    log "Installing ${t##*/}..."
     go get -u "$t"
   done
   )
@@ -252,6 +274,7 @@ fi
 
 # Setup tmux themes
 if [[ ! -d "$HOME/.tmux-themepack" ]]; then
+  log "Installing tmux theme..."
   read -rp "Enter desired powerline color:" color
   install_tmux_themes "$color"
 fi
@@ -265,4 +288,14 @@ currentHostname=$(scutil --get LocalHostName)
 if [[ "$currentHostname" != "$targetHostname" ]]; then
   log "Setting hostname to $targetHostname"
   setHostname "$targetHostname"
+fi
+
+##############
+# Setup gRPC #
+##############
+
+if ! command -v protoc; then
+  [[ ! -d /usr/local/protoc ]] && sudo mkdir /usr/local/protoc
+  installGRPC 3.8.0 /usr/local/protoc
+  sudo bash -c "cd /usr/local/protoc && stow 3.8.0"
 fi
