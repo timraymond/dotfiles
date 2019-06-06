@@ -52,6 +52,18 @@ installGRPC() {
   )
 }
 
+installGHZ() {
+  local version=$1
+  local downloadDir=$2
+
+  (
+    cd "$downloadDir"
+    sudo bash -c "curl -sSL \"https://github.com/bojand/ghz/releases/download/v${version}/ghz_${version}_Darwin_x86_64.tar.gz\" > \"ghz_${version}_Darwin_x86_64.tar.gz\""
+    sudo mkdir -p "${version}/bin"
+    sudo tar xzf "ghz_${version}_Darwin_x86_64.tar.gz" -C "${version}/bin"
+  )
+}
+
 go-install() {
   local goroots="/usr/local/goroots"
   local bootstrap_version="1.12.4"
@@ -298,4 +310,14 @@ if ! command -v protoc; then
   [[ ! -d /usr/local/protoc ]] && sudo mkdir /usr/local/protoc
   installGRPC 3.8.0 /usr/local/protoc
   sudo bash -c "cd /usr/local/protoc && stow 3.8.0"
+fi
+
+#############
+# Setup ghz #
+#############
+
+if ! command -v ghz; then
+  [[ ! -d /usr/local/ghz ]] && sudo mkdir /usr/local/ghz
+  installGHZ 0.37.0 /usr/local/ghz
+  sudo bash -c "cd /usr/local/ghz && stow 0.37.0"
 fi
