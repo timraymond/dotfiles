@@ -185,7 +185,8 @@ if ! grep "$zshPath" "$shellFile"; then
 fi
 
 # Switch shell to zsh
-if [[ "$SHELL" != "$zshPath" ]]; then
+userShell=$(dscl . -read "/Users/$USER" UserShell | awk '{print $2}')
+if [[ "$userShell" != "$zshPath" ]]; then
 	log "Changing shell for $USER to zsh"
 	chsh -s "$zshPath" "$USER"
 fi
