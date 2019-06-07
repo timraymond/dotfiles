@@ -13,6 +13,7 @@ brew 'z'
 brew 'direnv'
 brew 'mas'
 brew 'hub'
+brew 'tree'
 
 # Editing
 brew 'vim', override_system_vim: true
