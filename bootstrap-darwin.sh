@@ -108,6 +108,8 @@ initGoGlobal() {
     "github.com/gogo/protobuf/protoc-gen-gogo"
     "github.com/gogo/protobuf/gogoproto"
     "github.com/fullstorydev/grpcui"
+    "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway"
+    "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger"
   )
 
   version="$1"
