@@ -54,6 +54,9 @@ brew 'grpcurl'
 tap 'ktr0731/evans'
 brew 'evans'
 
+# Accounting
+brew 'ledger'
+
 # Mac App Store
 mas 'airmail', id: 918858936
 mas 'synalize-it-pro', id: 475193367
