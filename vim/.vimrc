@@ -37,6 +37,7 @@ call minpac#add('godlygeek/tabular')
 call minpac#add('junegunn/fzf')
 call minpac#add('fatih/vim-go')
 call minpac#add('w0rp/ale')
+call minpac#add('liuchengxu/space-vim-theme')
 
 " Optional plugins
 call minpac#add('cespare/vim-toml', {'type': 'opt'})
@@ -44,7 +45,7 @@ call minpac#add('hashivim/vim-terraform', {'type': 'opt'})
 
 
 call minpac#add('tomasr/molokai')
-colorscheme molokai
+colorscheme space_vim_theme
 
 " mappings
 let mapleader = "\<Space>"
@@ -78,6 +79,8 @@ nnoremap <leader>gc :GoCallers<CR>
 nnoremap <leader>p :set paste<CR>
 nnoremap <leader>P :set nopaste<CR>
 nnoremap <leader>f :FZF<CR>
+nnoremap <leader>cl :set background=light<CR>
+nnoremap <leader>cd :set background=dark<CR>
 
 autocmd FileType go set foldmethod=syntax
 autocmd FileType go packadd vim-go
