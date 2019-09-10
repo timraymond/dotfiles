@@ -37,6 +37,7 @@ cask 'zoomus'
 cask 'docker'
 cask 'rescuetime'
 cask 'recordit'
+cask 'whatsapp'
 
 # Fonts
 tap 'homebrew/cask-fonts'
