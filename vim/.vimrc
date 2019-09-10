@@ -42,6 +42,7 @@ call minpac#add('liuchengxu/space-vim-theme')
 " Optional plugins
 call minpac#add('cespare/vim-toml', {'type': 'opt'})
 call minpac#add('hashivim/vim-terraform', {'type': 'opt'})
+call minpac#add('jasontbradshaw/pigeon.vim', {'type': 'opt'})
 
 
 call minpac#add('tomasr/molokai')
