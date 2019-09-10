@@ -72,7 +72,11 @@ go-install() {
   local version="$1"
 
 
-  if shouldBootstrap; then
+  # originally, this called shouldBootstrap, which would determine if this
+  # should pull down the bootstrap tarball. Instead, this always does this.
+  # Ideally, for each new version of Go, we'd just use git worktrees. Really,
+  # this is stretching what belongs in a bash script.
+  if true; then
     (
       cd "$goroots"
       curl -sL "${bs_url}" -o "${bs_tarball}"
@@ -110,14 +114,17 @@ initGoGlobal() {
     "github.com/fullstorydev/grpcui"
     "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway"
     "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger"
+    "github.com/gobuffalo/packr/v2/packr2"
   )
 
   version="$1"
 
-  log "Creating go${version} global directory..."
-  sudo mkdir "/usr/local/go-global"
-  sudo chmod g+wx "/usr/local/go-global"
-  sudo chgrp -hR gophers "/usr/local/go-global"
+  if [[ ! -d "/usr/local/go-global" ]]; then
+    log "Creating go${version} global directory..."
+    sudo mkdir "/usr/local/go-global"
+    sudo chmod g+wx "/usr/local/go-global"
+    sudo chgrp -hR gophers "/usr/local/go-global"
+  fi
 
   mkdir "/usr/local/go-global/${version}"
   globalEnvRC "${version}" | tee -a "/usr/local/go-global/${version}/.envrc"
@@ -271,11 +278,17 @@ if [[ ! -d "${goroots}" ]]; then
   sudo chgrp -hR gophers "${goroots}"
 
   go-install 1.12
+  go-install 1.13
 fi
 
 if [[ ! -d "/usr/local/go-global/1.12" ]]; then
   log "Go 1.12 global directory missing. Setting up..."
   initGoGlobal 1.12
+fi
+
+if [[ ! -d "/usr/local/go-global/1.13" ]]; then
+  log "Go 1.13 global directory missing. Setting up..."
+  initGoGlobal 1.13
 fi
 
 if [[ ! -d "$HOME/.ssh" ]]; then
