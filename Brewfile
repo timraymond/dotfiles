@@ -38,6 +38,7 @@ cask 'docker'
 cask 'rescuetime'
 cask 'recordit'
 cask 'whatsapp'
+cask 'devonthink'
 
 # Fonts
 tap 'homebrew/cask-fonts'
