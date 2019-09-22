@@ -64,6 +64,18 @@ installGHZ() {
   )
 }
 
+installHypriotFlash() {
+  local version=$1
+  local downloadDir=$2
+
+  (
+    cd "$downloadDir"
+    sudo mkdir -p "${version}/bin"
+    sudo bash -c "curl -sSL \"https://github.com/hypriot/flash/releases/download/${version}/flash\" > \"${version}/bin/flash\""
+    sudo chmod ugo+x "${version}/bin/flash"
+  )
+}
+
 go-install() {
   local goroots="/usr/local/goroots"
   local bootstrap_version="1.12.4"
@@ -276,8 +288,13 @@ if [[ ! -d "${goroots}" ]]; then
   sudo mkdir -p "${goroots}"
   sudo chmod g+wx "${goroots}"
   sudo chgrp -hR gophers "${goroots}"
+fi
 
+if [[ ! -d "${goroots}/go1.12" ]]; then
   go-install 1.12
+fi
+
+if [[ ! -d "${goroots}/go1.13" ]]; then
   go-install 1.13
 fi
 
@@ -336,4 +353,14 @@ if ! command -v ghz; then
   [[ ! -d /usr/local/ghz ]] && sudo mkdir /usr/local/ghz
   installGHZ 0.37.0 /usr/local/ghz
   sudo bash -c "cd /usr/local/ghz && stow 0.37.0"
+fi
+
+######################
+# Hypriot Flash Tool #
+######################
+
+if ! command -v flash; then
+  [[ ! -d /usr/local/hypriot_flash ]] && sudo mkdir /usr/local/hypriot_flash
+  installHypriotFlash 2.3.0 /usr/local/hypriot_flash
+  sudo bash -c "cd /usr/local/hypriot_flash && stow 2.3.0"
 fi
