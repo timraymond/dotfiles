@@ -81,8 +81,8 @@ nnoremap <leader>gc :GoCallers<CR>
 nnoremap <leader>p :set paste<CR>
 nnoremap <leader>P :set nopaste<CR>
 nnoremap <leader>f :FZF<CR>
-nnoremap <leader>cl :set background=light<CR>
-nnoremap <leader>cd :set background=dark<CR>
+nnoremap <leader>bl :set background=light<CR>
+nnoremap <leader>bd :set background=dark<CR>
 
 autocmd FileType go set foldmethod=syntax
 autocmd FileType go packadd vim-go
