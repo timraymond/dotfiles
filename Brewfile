@@ -14,12 +14,14 @@ brew 'direnv'
 brew 'mas'
 brew 'hub'
 brew 'tree'
+brew 'nmap'
 
 # Editing
 brew 'vim', override_system_vim: true
 
 # Linting
 brew 'shellcheck'
+brew 'yamllint'
 
 # Casks
 cask 'firefox'
