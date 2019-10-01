@@ -73,7 +73,7 @@ nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>T :tabe<CR>
 nnoremap <leader>gi :GoImports<CR>
-nnoremap <leader>r :!tt<CR>
+nnoremap <leader>r :GoTest<CR>
 nnoremap <leader>R :GoTestFunc<CR>
 nnoremap <leader>gI :GoInstall<CR>
 nnoremap <leader>gr :GoReferrers<CR>
