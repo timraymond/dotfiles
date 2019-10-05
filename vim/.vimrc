@@ -44,6 +44,7 @@ call minpac#add('cespare/vim-toml', {'type': 'opt'})
 call minpac#add('hashivim/vim-terraform', {'type': 'opt'})
 call minpac#add('jasontbradshaw/pigeon.vim', {'type': 'opt'})
 call minpac#add('ledger/vim-ledger', {'type': 'opt'})
+call minpac#add('plasticboy/vim-markdown', {'type': 'opt'})
 
 
 call minpac#add('tomasr/molokai')
