@@ -15,6 +15,7 @@ brew 'mas'
 brew 'hub'
 brew 'tree'
 brew 'nmap'
+brew 'graphviz'
 
 # Files
 brew 'syncthing'
