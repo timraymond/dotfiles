@@ -16,6 +16,9 @@ brew 'hub'
 brew 'tree'
 brew 'nmap'
 
+# Files
+brew 'syncthing'
+
 # Editing
 brew 'vim', override_system_vim: true
 
@@ -40,7 +43,8 @@ cask 'docker'
 cask 'rescuetime'
 cask 'recordit'
 cask 'whatsapp'
-cask 'devonthink'
+cask 'devonthink-pro-office'
+cask 'syncthing'
 
 # Fonts
 tap 'homebrew/cask-fonts'
