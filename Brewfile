@@ -74,3 +74,4 @@ mas 'tweetbot', id: 557168941
 mas '1password', id: 443987910
 mas 'omnifocus', id: 1346203938 
 mas 'focus', id: 777233759
+mas 'scrivener', id: 1310686187
