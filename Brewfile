@@ -23,6 +23,9 @@ brew 'syncthing'
 # Editing
 brew 'vim', override_system_vim: true
 
+# Code highlighting for Keynote
+brew 'highlight'
+
 # Linting
 brew 'shellcheck'
 brew 'yamllint'
@@ -46,6 +49,7 @@ cask 'recordit'
 cask 'whatsapp'
 cask 'devonthink-pro-office'
 cask 'syncthing'
+cask 'screenflow'
 
 # Fonts
 tap 'homebrew/cask-fonts'

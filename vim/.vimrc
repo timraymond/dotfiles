@@ -112,3 +112,19 @@ let g:ale_linters = {
   \ 'go': ['gopls'],
   \ 'proto': ['prototool-lint'],
   \}
+
+" Ledger
+function LoadLedger()
+  packadd vim-ledger
+  set ft=ledger
+  set foldmethod=syntax
+endfunction
+
+autocmd BufRead *.ledger call LoadLedger()
+
+" Remap paragraph-wise moves for transactions
+autocmd FileType ledger noremap { ?^\d<CR>
+autocmd FileType ledger noremap } /^\d<CR>
+
+autocmd FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
+autocmd FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
