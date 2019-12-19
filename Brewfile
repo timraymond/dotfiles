@@ -16,9 +16,20 @@ brew 'hub'
 brew 'tree'
 brew 'nmap'
 brew 'graphviz'
+brew 'mutt'
+
+# Provisioning
+brew 'terraform'
+brew 'packer'
+
+# VPN
+brew 'wireguard-tools'
 
 # Files
 brew 'syncthing'
+
+# Langs
+brew 'rustup'
 
 # Editing
 brew 'vim', override_system_vim: true
