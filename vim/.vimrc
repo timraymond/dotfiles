@@ -118,6 +118,7 @@ function LoadLedger()
   packadd vim-ledger
   set ft=ledger
   set foldmethod=syntax
+  nnoremap <leader>st :call ledger#transaction_state_toggle(line('.'), ' *?!')<CR>
 endfunction
 
 autocmd BufRead *.ledger call LoadLedger()

@@ -17,6 +17,15 @@ brew 'tree'
 brew 'nmap'
 brew 'graphviz'
 brew 'mutt'
+brew 'links'
+brew 'jq'
+brew 'hugo'
+brew 'exiftool' # strip metadata: exiftool -all= /path/to/file.jpg
+brew 'imagemagick'
+
+# Heroku
+tap 'heroku/brew'
+brew 'heroku'
 
 # Provisioning
 brew 'terraform'
@@ -61,6 +70,8 @@ cask 'whatsapp'
 cask 'devonthink-pro-office'
 cask 'syncthing'
 cask 'screenflow'
+cask 'monodraw'
+cask 'deluge'
 
 # Fonts
 tap 'homebrew/cask-fonts'
