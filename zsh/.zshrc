@@ -13,6 +13,7 @@ antigen use oh-my-zsh
 
 # Bundles
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle agkozak/zsh-z
 
 # Themes
 antigen theme cloud
@@ -33,12 +34,18 @@ export PATH="/usr/local/sbin:$PATH"
 # Fix that annoying "problem with 'vi'" thing
 export KUBE_EDITOR=/usr/bin/vim
 
+#############
+# z command #
+#############
+
+. $HOME/.scripts/z/z.sh
+echo MANPATH="$MANPATH:$HOME/.scripts/z"
+
 ###########
 # Aliases #
 ###########
 
-# Z cmd
-. $(brew --prefix)/etc/profile.d/z.sh
-
-# Source mattel-specific configuration and aliases
-if [[ -f $HOME/.mattelrc ]]; then source $HOME/.mattelrc; fi
+##########
+# Editor #
+##########
+export EDITOR=vim
