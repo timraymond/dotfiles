@@ -14,6 +14,11 @@
     text = "keep";
   };
 
+  home.file.".vim/snips/.keep" = {
+    enable = true;
+    text = "keep";
+  };
+
   home.packages = with pkgs; [
     ripgrep
     gh

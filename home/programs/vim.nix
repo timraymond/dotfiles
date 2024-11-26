@@ -23,6 +23,7 @@
         vim-helm
         pkgs.vim-bicep
         vim-terraform
+        ultisnips
       ];
       extraConfig = ''
         colorscheme space_vim_theme
@@ -31,6 +32,8 @@
         let mapleader = "\<Space>"
 
         set directory=~/.vim/swapfiles
+
+        let g:UltiSnipsSnippetDirectories = ["snips"]
 
         map <Leader>e <Plug>(easymotion-prefix)
 
