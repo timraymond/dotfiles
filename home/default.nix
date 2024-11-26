@@ -22,10 +22,8 @@
     kind
     docker
     git-credential-manager
-    wslu
     kubernetes-helm
     keybase
-    keybase-gui
     kbfs
     comma
     tig
@@ -33,6 +31,9 @@
     universal-ctags
     tmux-themepack
     git-bug
+  ] ++ lib.optionals (!stdenv.isDarwin) [
+    wslu
+    keybase-gui
   ];
 
   programs.direnv = {

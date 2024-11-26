@@ -1,4 +1,7 @@
 { config, lib, pkgs, ... }:
+let
+  themeColor = if pkgs.stdenv.isDarwin then "green" else "blue";
+in
 {
     programs.tmux = {
       enable = true;
@@ -42,7 +45,7 @@
       set-option -g allow-rename off
 
       # theme
-      source-file ${pkgs.tmux-themepack}/share/tmux-themepack/powerline/default/blue.tmuxtheme
+      source-file ${pkgs.tmux-themepack}/share/tmux-themepack/powerline/default/${themeColor}.tmuxtheme
       '';
     };
 }

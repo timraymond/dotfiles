@@ -59,9 +59,17 @@
           home-manager.darwinModules.home-manager
           {
             nixpkgs.overlays = overlays;
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.nixos = import ./home;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users."tim" = { pkgs, ... }: {
+                imports = [ ./home ];
+                home = {
+                  username = "tim";
+                  homeDirectory = "/Users/tim";
+                };
+              };
+            };
           }
         ];
       };
