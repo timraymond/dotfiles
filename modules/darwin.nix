@@ -18,7 +18,7 @@
         KeyRepeat = 2;
       };
       dock = {
-        autohide = true;
+        autohide = false;
         showhidden = true;
         mru-spaces = false;
       };
@@ -32,4 +32,9 @@
   programs.zsh.enable = true;
 
   services.nix-daemon.enable = true;
+
+  users.users.tim = {
+    name = "tim";
+    home = "/Users/tim";
+  };
 }

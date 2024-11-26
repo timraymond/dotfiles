@@ -46,14 +46,19 @@
     mutableKeys = true;
   };
 
-  services = {
-    keybase.enable = true;
-    kbfs.enable = true;
-    gpg-agent = {
-      enable = true;
-      defaultCacheTtl = 1800;
-      pinentryPackage = pkgs.pinentry-curses;
-      enableSshSupport = true;
-    };
-  };
+  services = lib.mkMerge [
+    {
+      gpg-agent = {
+        enable = true;
+        defaultCacheTtl = 1800;
+        pinentryPackage = pkgs.pinentry-curses;
+        enableSshSupport = true;
+      };
+    }
+
+    (lib.mkIf (!pkgs.stdenv.isDarwin) {
+      keybase.enable = true;
+      kbfs.enable = true;
+    })
+  ];
 }
