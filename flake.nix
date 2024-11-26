@@ -58,6 +58,7 @@
           ./modules/darwin.nix
           home-manager.darwinModules.home-manager
           {
+            nixpkgs.overlays = overlays;
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.nixos = import ./home;
