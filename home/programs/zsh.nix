@@ -9,6 +9,8 @@
         plugins = [
           "git"
           "z"
+          "kubectl"
+          "azure"
         ];
         theme = "cloud";
       };
