@@ -43,6 +43,17 @@ final: prev: {
     };
   };
 
+  vim-sentencer = prev.vimUtils.buildVimPlugin {
+    pname = "vim-sentencer";
+    version = "8826dcb";
+    src = prev.fetchFromGitHub {
+      owner = "whonore";
+      repo = "vim-sentencer";
+      rev = "master";
+      sha256 = "sha256-6hI+JBdK+LJiTp1pPceHPKzX26cx0LLUmv3yI2TNPyk=";
+    };
+  };
+
   pinentry-wsl = prev.stdenv.mkDerivation {
     pname = "pinentry-wsl";
     version = "41c6ea1";
