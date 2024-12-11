@@ -42,4 +42,27 @@ final: prev: {
       sha256 = "1ouXcJHWhX7vPuOa27kPT+49cBTFB4n3HZ/LwE+12aw=";
     };
   };
+
+  pinentry-wsl = prev.stdenv.mkDerivation {
+    pname = "pinentry-wsl";
+    version = "41c6ea1";
+    meta = {
+      mainProgram = "pinentry-wsl-ps1.sh";
+    };
+    src = prev.fetchFromGitHub {
+      owner = "diablodale";
+      repo = "pinentry-wsl-ps1";
+      rev = "4fc6ea16270c9c2f2d9daeae1ba4aa0d868d1b2a";
+      sha256 = "sha256-nAK3GwVYOOghFVf9Yj5zFOcVeFfSsW5fHy6rfH+edAs=";
+    };
+    buildInputs = [ prev.bash ];
+    nativeBuildInputs = [ prev.makeWrapper ];
+    installPhase = ''
+      mkdir -p $out/bin
+      chmod +x pinentry-wsl-ps1.sh
+      cp pinentry-wsl-ps1.sh $out/bin/pinentry-wsl-ps1.sh
+      wrapProgram $out/bin/pinentry-wsl-ps1.sh \
+        --prefix PATH : ${prev.lib.makeBinPath [ prev.bash ]}
+    '';
+  };
 }

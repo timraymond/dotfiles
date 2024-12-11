@@ -53,10 +53,15 @@
 
   services = lib.mkMerge [
     {
-      gpg-agent = {
+      gpg-agent = let
+        day = 86400;
+      in {
         enable = true;
-        defaultCacheTtl = 1800;
-        pinentryPackage = pkgs.pinentry-curses;
+        defaultCacheTtl = 1 * day;
+        defaultCacheTtlSsh = 1 * day;
+        maxCacheTtl = 30 * day;
+        maxCacheTtlSsh = 30 * day;
+        pinentryPackage = pkgs.pinentry-wsl;
         enableSshSupport = true;
       };
     }
