@@ -18,11 +18,18 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    helm-complete = {
+      url = "github:timraymond/helm-complete";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-wsl, darwin }:
+  outputs = { self, nixpkgs, home-manager, nixos-wsl, darwin, helm-complete}:
   let
-    overlays = [ (import ./overlays) ];
+    overlays = [
+      (import ./overlays)
+      helm-complete.overlays.default
+    ];
 
     mkSystem = import ./lib/mk-system.nix;
 

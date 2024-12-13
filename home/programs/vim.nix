@@ -25,6 +25,7 @@
         vim-terraform
         ultisnips
         pkgs.vim-sentencer
+        vim-helm-complete
       ];
       extraConfig = ''
         colorscheme space_vim_theme

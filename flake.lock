@@ -54,6 +54,24 @@
         "type": "github"
       }
     },
+    "helm-complete": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1734118721,
+        "narHash": "sha256-Y/ArKLk5df5O5+dFiPQKI90uKXQyu6FGruprHC/4Yww=",
+        "owner": "timraymond",
+        "repo": "helm-complete",
+        "rev": "856356f07dd8612f70916ea60b188894806c9d0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "timraymond",
+        "repo": "helm-complete",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -98,6 +116,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1733940404,
+        "narHash": "sha256-Pj39hSoUA86ZePPF/UXiYHHM7hMIkios8TYG29kQT4g=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5d67ea6b4b63378b9c13be21e2ec9d1afc921713",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1732014248,
         "narHash": "sha256-y/MEyuJ5oBWrWAic/14LaIr/u5E0wRVzyYsouYY3W6w=",
         "owner": "nixos",
@@ -115,9 +149,10 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
+        "helm-complete": "helm-complete",
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "systems": {
