@@ -22,9 +22,26 @@
     helm-complete = {
       url = "github:timraymond/helm-complete";
     };
+
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-wsl, darwin, helm-complete}:
+  outputs = { self, nixpkgs, home-manager, nixos-wsl, darwin, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, helm-complete }:
   let
     overlays = [
       (import ./overlays)
@@ -72,6 +89,19 @@
       ceres = darwin.lib.darwinSystem {
         system = "x86_64-darwin";
         modules = [
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              user = "tim";
+              taps = {
+                "homebrew/homebrew-core" = homebrew-core;
+                "homebrew/homebrew-cask" = homebrew-cask;
+                "homebrew/homebrew-bundle" = homebrew-bundle;
+              };
+              mutableTaps = false;
+            };
+          }
           ./modules/darwin.nix
           home-manager.darwinModules.home-manager
           {

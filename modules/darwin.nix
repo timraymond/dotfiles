@@ -29,9 +29,33 @@
     };
   };
 
+  homebrew = {
+    enable = true;
+    onActivation = {
+      cleanup = "zap";
+      autoUpdate = true;
+    };
+
+    casks = [
+      "dash"
+      "autodesk-fusion"
+      "microsoft-office"
+    ];
+
+    masApps = {
+      "1password" = 443987910;
+      "OmniFocus" = 1346203938;
+    };
+  };
+
   programs.zsh.enable = true;
 
   services.nix-daemon.enable = true;
+
+  services.tailscale = {
+    enable = true;
+    overrideLocalDns = true;
+  };
 
   users.users.tim = {
     name = "tim";
