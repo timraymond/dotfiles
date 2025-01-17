@@ -46,6 +46,11 @@
     nix-direnv.enable = true;
   };
 
+  programs.taskwarrior = {
+    enable = true;
+    config = {};
+  };
+
   programs.gpg = {
     enable = true;
     mutableKeys = true;
