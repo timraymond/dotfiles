@@ -53,6 +53,9 @@
 
         nnoremap <leader>t :TagbarToggle<CR>
 
+        nnoremap <leader>fs :set foldmethod=syntax<CR>
+        nnoremap <leader>fi :set foldmethod=indent<CR>
+
         set wildmode=longest,full
         set wildmenu
         set wildignore+=.git
