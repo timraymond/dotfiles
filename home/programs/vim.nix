@@ -26,6 +26,7 @@
         ultisnips
         pkgs.vim-sentencer
         vim-helm-complete
+        vim-swap
       ];
       extraConfig = ''
         colorscheme space_vim_theme
