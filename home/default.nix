@@ -36,6 +36,8 @@
     universal-ctags
     tmux-themepack
     git-bug
+    mutt
+    mutt-oauth
   ] ++ lib.optionals (!stdenv.isDarwin) [
     wslu
     keybase-gui

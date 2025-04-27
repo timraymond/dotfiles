@@ -56,6 +56,16 @@
           { nixpkgs.overlays = overlays; }
         ];
       };
+
+      eros = mkSystem {
+        inherit nixpkgs home-manager;
+        system = "x86_64-linux";
+        extraModules = [
+          ./hosts/eros/hardware-configuration.nix
+          ./hosts/eros/configuration.nix
+          { nixpkgs.overlays = overlays; }
+        ];
+      };
     };
 
     darwinConfigurations = {

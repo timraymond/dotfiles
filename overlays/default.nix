@@ -76,4 +76,28 @@ final: prev: {
         --prefix PATH : ${prev.lib.makeBinPath [ prev.bash ]}
     '';
   };
+
+  mutt-oauth = prev.stdenv.mkDerivation {
+    pname = "mutt_oauth2";
+    version = "354c5b11eaac97063dd98cbc58acbcecc34e6729";
+    meta = {
+      mainProgram = "mutt_oauth2.py";
+    };
+    buildInputs = [ prev.python3 ];
+    nativeBuildInputs = [ prev.makeWrapper ];
+    src = prev.fetchFromGitLab {
+      owner = "muttmua";
+      repo = "mutt";
+      rev = "354c5b11eaac97063dd98cbc58acbcecc34e6729";
+      sha256 = "sha256-3slr77Rd2yDyhiTt5C+g2h5hxytqu7LJo/6u4Q15N3s=";
+    };
+    installPhase = ''
+      mkdir -p $out/bin
+      cp $src/contrib/mutt_oauth2.py $out/bin
+      sed -i s/YOUR_GPG_IDENTITY/tim@timraymond.com/g $out/bin/mutt_oauth2.py
+      chmod +x $out/bin/mutt_oauth2.py
+      wrapProgram $out/bin/mutt_oauth2.py \
+        --prefix PATH : ${prev.lib.makeBinPath [ prev.python3 ]}
+    '';
+  };
 }

@@ -21,12 +21,13 @@
         tagbar
         taboo-vim
         vim-helm
-        pkgs.vim-bicep
+        # pkgs.vim-bicep
         vim-terraform
         ultisnips
         pkgs.vim-sentencer
         vim-helm-complete
         vim-swap
+        vim-ledger
       ];
       extraConfig = ''
         colorscheme space_vim_theme

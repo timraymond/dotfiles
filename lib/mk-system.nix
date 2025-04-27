@@ -8,7 +8,7 @@ nixpkgs.lib.nixosSystem {
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.nixos = import ../home;
+      home-manager.users.tim = import ../home;
     }
   ] ++ extraModules;
 }
