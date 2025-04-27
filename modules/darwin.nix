@@ -38,8 +38,9 @@
 
     casks = [
       "dash"
-      "autodesk-fusion"
-      "microsoft-office"
+      #"autodesk-fusion"
+      #"microsoft-office"
+      "karabiner-elements"
     ];
 
     masApps = {
