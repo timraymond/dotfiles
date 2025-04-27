@@ -90,6 +90,27 @@
           }
         ];
       };
+      tempest = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./modules/darwin.nix
+          home-manager.darwinModules.home-manager
+          {
+            nixpkgs.overlays = overlays;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users."tim" = { pkgs, ... }: {
+                imports = [ ./home ];
+                home = {
+                  username = "tim";
+                  homeDirectory = "/Users/tim";
+                };
+              };
+            };
+          }
+        ];
+      };
     };
 
     homeConfigurations = {
