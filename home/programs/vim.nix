@@ -28,6 +28,7 @@
         vim-helm-complete
         vim-swap
         vim-ledger
+        pkgs.vim-tla
       ];
       extraConfig = ''
         colorscheme space_vim_theme

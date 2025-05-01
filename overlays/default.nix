@@ -43,6 +43,17 @@ final: prev: {
     };
   };
 
+  vim-tla = prev.vimUtils.buildVimPlugin {
+    pname = "vim-tla";
+    version = "master";
+    src = prev.fetchFromGitHub {
+      owner = "florentc";
+      repo = "vim-tla";
+      rev = "master";
+      sha256 = "sha256-YdXBzxB5yfpPJJ1wVRdl6i1rPDzgwrxB1Onlkixk4/c=";
+    };
+  };
+
   vim-sentencer = prev.vimUtils.buildVimPlugin {
     pname = "vim-sentencer";
     version = "8826dcb";
