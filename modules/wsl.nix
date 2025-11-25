@@ -2,7 +2,7 @@
 {
   wsl = {
     enable = true;
-    defaultUser = "nixos";
+    defaultUser = "tim";
   };
 
   time.timeZone = lib.mkDefault "America/New_York";
@@ -11,7 +11,7 @@
     package = pkgs.nixVersions.stable;
     settings = {
       experimental-features = "nix-command flakes";
-      trusted-users = [ "nixos" ];
+      trusted-users = [ "tim" ];
     };
   };
 
@@ -19,7 +19,10 @@
 
   virtualisation.docker.enable = true;
 
-  users.users.nixos = {
+  users.groups.tim = {};
+  users.users.tim = {
+    group = "tim";
+    isNormalUser = true;
     extraGroups = [ "docker" ];
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
